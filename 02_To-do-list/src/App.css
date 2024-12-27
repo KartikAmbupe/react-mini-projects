@@ -1,0 +1,52 @@
+body{
+  display: flex;
+  justify-content: center;
+}
+.app {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+.input-container {
+  margin: 10px;
+}
+
+input {
+  padding: 10px;
+  width: 200px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px 15px;
+  cursor: pointer;
+  background-color: #0bea47;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #26b65a;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin: 5px 0;
+}
+
+li button {
+  margin-left: 10px;
+  background-color: #f44336;
+}
+
+li button:hover {
+  background-color: #e53935;
+}
+
+
