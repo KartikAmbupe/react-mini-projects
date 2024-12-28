@@ -49,4 +49,13 @@ li button:hover {
   background-color: #e53935;
 }
 
+li.completed{
+  text-decoration: line-through;
+  color: gray;
+}
+
+.checkbox{
+  width: 20px;
+}
+
 

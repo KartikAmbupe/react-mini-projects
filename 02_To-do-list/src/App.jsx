@@ -8,9 +8,21 @@ function App() {
 
   const addTask = () => {
     if(newTask.trim() !== ''){
-      setTasks([...tasks, newTask]);
+      setTasks([...tasks, {text: newTask, isCompleted: false}]);
       setNewTask("");
     }
+  };
+
+  const taskCompletion = (index) => {
+    const updatedTasks = tasks.map((task, i) => {
+      if(i === index){
+        return {...task, isCompleted: !task.isCompleted}
+      }
+      else{
+        return task;
+      }
+    });
+    setTasks(updatedTasks);
   };
 
   const removeTask = (index) => {
@@ -33,8 +45,13 @@ function App() {
       </div>
       <ul>
         {tasks.map((task, index) => (
-          <li key={index}>
-            {task}{" "}
+          <li key={index} className={task.isCompleted ? "completed" : ""}>
+            <input className='checkbox'
+              type="checkbox"
+              checked={task.isCompleted}
+              onChange={() => taskCompletion(index)}
+            />
+            {task.text}{' '}
             <button onClick={() => removeTask(index)}>Remove</button>
           </li>
         ))}
