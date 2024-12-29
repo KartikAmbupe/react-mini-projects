@@ -28,7 +28,8 @@ const Todo = () => {
     };
 
     return (
-        <div className='flex justify-center'>
+        <>
+        <div className='flex justify-center min-h-screen'>
             <div className="app text-center font-sans mt-10 mx-4">
                 <h1 className="text-4xl font-bold mb-4">To-Do List</h1>
                 <div className="input-container mb-4">
@@ -47,7 +48,7 @@ const Todo = () => {
                     </button>
                 </div>
                 <div className="table-container">
-                    <table className="table-auto w-full border-collapse border border-gray-200">
+                    <table className="table-auto w-full border-collapse border border-gray-200 mt-10">
                         <thead>
                             <tr className="">
                                 <th className="border px-4 py-2 ">Status</th>
@@ -81,6 +82,7 @@ const Todo = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 
