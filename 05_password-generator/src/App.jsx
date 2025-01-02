@@ -1,4 +1,6 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [length, setLength] = useState(8);
@@ -30,7 +32,9 @@ function App() {
   const copyPasswordToClipboard = useCallback(() => {
     passwordRef.current?.select();
     passwordRef.current?.setSelectionRange(0, 50);
-    window.navigator.clipboard.writeText(password);
+    window.navigator.clipboard.writeText(password).then(()=>{
+      toast.success('Copied!');
+    });
   }, [password])
 
   useEffect(() => {
@@ -87,7 +91,7 @@ function App() {
           <label htmlFor="spCharInput">Characters</label>
         </div>
       </div>
-
+      <ToastContainer />
     </>
   )
 }
