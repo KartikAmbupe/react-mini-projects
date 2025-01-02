@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 
 function App() {
   const [length, setLength] = useState(8);
@@ -6,11 +6,16 @@ function App() {
   const [includeSpChar, setincludeSpChar] = useState(false);
   const [password, setPassword] = useState('');
 
+  //useRef hook
+  const passwordRef = useRef(null);
+
   const passwordGenerator = useCallback(() => {
     let password = '';
     let str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+
     if(includeNumber)
       str += '0123456789';
+
     if(includeSpChar)
       str += '!@#$%^&*()_+~`|}{[]:;?><,./';
 
@@ -18,14 +23,23 @@ function App() {
       let char = Math.floor(Math.random() * str.length + 1);
       password += str.charAt(char);
     }
-
     setPassword(password);
 
   }, [length, includeNumber, includeSpChar, setPassword]) 
 
+  const copyPasswordToClipboard = useCallback(() => {
+    passwordRef.current?.select();
+    passwordRef.current?.setSelectionRange(0, 50);
+    window.navigator.clipboard.writeText(password);
+  }, [password])
+
+  useEffect(() => {
+    passwordGenerator();
+  }, [length, includeNumber, includeSpChar, passwordGenerator])
+
   return (
     <>
-      <div className="w-full max-w-md mx-auto shadow-md rounded-lg px-4 py-3 my-8 bg-gray-800 text-orange-500">
+      <div className="w-full max-w-lg mx-auto shadow-md rounded-lg px-4 py-3 my-8 bg-gray-800 text-red-500">
         <h1 className='text-white text-center my-3'>Password generator</h1>
         <div className="flex shadow rounded-lg overflow-hidden mb-4">
             <input
@@ -34,11 +48,11 @@ function App() {
                 className="outline-none w-full py-1 px-3"
                 placeholder="Password"
                 readOnly
-                // ref={passwordRef}
+                ref={passwordRef}
             />
             <button
-            // onClick={copyPasswordToClipboard}
-            className='outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0'
+            onClick={copyPasswordToClipboard}
+            className='outline-none bg-green-700 text-white px-3 py-0.5 shrink-0 hover:bg-green-800 active:bg-green-900'
             >Copy</button>
         </div>
         <div className='flex test-sm gap-x-2 px-3 mb-3'>
@@ -61,6 +75,16 @@ function App() {
               onChange={() => {setIncludeNumber((prev) => !prev)}}
             />
           </div>
+          <label htmlFor="numberInput">Numbers</label>
+          <div className='flex items-center gap-x-1'>
+            <input 
+              type="checkbox"
+              defaultChecked={includeSpChar}
+              id='spCharInput'
+              onChange={() => {setincludeSpChar((prev) => !prev)}}
+             />
+          </div>
+          <label htmlFor="spCharInput">Characters</label>
         </div>
       </div>
 
