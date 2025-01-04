@@ -48,37 +48,39 @@ const Todo = () => {
                     </button>
                 </div>
                 <div className="table-container">
-                    <table className="table-auto w-full border-collapse border border-gray-200 mt-10">
-                        <thead>
-                            <tr className="">
-                                <th className="border px-4 py-2 ">Status</th>
-                                <th className="border px-4 py-2 ">Task</th>
-                                <th className="border px-4 py-2 ">Remove</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {tasks.map((task, index) => (
-                                <tr key={index} className={task.isCompleted ? 'line-through text-gray-500' : ''}>
-                                    <td className="border px-4 py-2 text-center">
-                                        <input
-                                            type="checkbox"
-                                            checked={task.isCompleted}
-                                            onChange={() => taskCompletion(index)}
-                                        />
-                                    </td>
-                                    <td className="border px-4 py-2">{task.text}</td>
-                                    <td className="border px-4 py-2 text-center">
-                                        <button 
-                                            onClick={() => removeTask(index)} 
-                                            className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700"
-                                        >
-                                            Remove
-                                        </button>
-                                    </td>
+                    {tasks.length > 0 &&(
+                        <table className="table-auto w-full border-collapse border border-gray-200 mt-10">
+                            <thead>
+                                <tr className="">
+                                    <th className="border px-4 py-2 ">Status</th>
+                                    <th className="border px-4 py-2 ">Task</th>
+                                    <th className="border px-4 py-2 ">Remove</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {tasks.map((task, index) => (
+                                    <tr key={index} className={task.isCompleted ? 'line-through text-gray-500' : ''}>
+                                        <td className="border px-4 py-2 text-center">
+                                            <input
+                                                type="checkbox"
+                                                checked={task.isCompleted}
+                                                onChange={() => taskCompletion(index)}
+                                            />
+                                        </td>
+                                        <td className="border px-4 py-2">{task.text}</td>
+                                        <td className="border px-4 py-2 text-center">
+                                            <button 
+                                                onClick={() => removeTask(index)} 
+                                                className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700"
+                                            >
+                                                Remove
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    )}
                 </div>
             </div>
         </div>
