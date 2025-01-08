@@ -28,7 +28,7 @@ function App() {
     className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
     style={{backgroundImage: `url('https://d2908q01vomqb2.cloudfront.net/9e6a55b6b4563e652a23be9d623ca5055c356940/2021/05/11/digital-currency.jpg')`,}}>
         <div className="w-full">
-            <div className="w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 backdrop-blur-sm bg-white/30">
+            <div className="w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 backdrop-blur-sm bg-black/30">
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
@@ -47,9 +47,9 @@ function App() {
                     <div className="relative w-full h-0.5">
                         <button
                             type="button"
-                            className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-white rounded-md bg-blue-600 text-white px-2 py-0.5"
+                            className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-none rounded-md bg-red-600 text-white px-2 py-0.5"
                             onClick={swap}>
-                            swap
+                            ↑↓
                         </button>
                     </div>
                     <div className="w-full mt-1 mb-4">
@@ -62,7 +62,7 @@ function App() {
                             onAmountChange={(amount) => setAmount(amount)}
                         />
                     </div>
-                    <button type="submit" className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg">
+                    <button type="submit" className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg text-lg">
                         Convert {from.toUpperCase()} to {to.toUpperCase()}
                     </button>
                 </form>
