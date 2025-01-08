@@ -1,4 +1,5 @@
-import React, {useId} from 'react'
+import {useId} from 'react'
+import PropTypes from 'prop-types';
 
 const InputBox = ({
   label,
@@ -47,6 +48,18 @@ const InputBox = ({
             </div>
         </div>
   )
+};
+
+InputBox.propTypes = {
+  label: PropTypes.string,
+  amount: PropTypes.number,
+  onAmountChange: PropTypes.func,
+  onCurrencyChange: PropTypes.func,
+  currencyOptions: PropTypes.array,
+  selectCurrency: PropTypes.string,
+  amountDisable: PropTypes.bool,
+  currencyDisable: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 export default InputBox
