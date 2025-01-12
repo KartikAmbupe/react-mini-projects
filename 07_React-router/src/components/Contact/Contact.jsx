@@ -1,4 +1,3 @@
-
 const Contact = () => {
     return (
         <div className="relative flex items-top justify-center min-h-[700px] bgWhite sm:items-center sm:pt-0">
