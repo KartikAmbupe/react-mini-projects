@@ -39,10 +39,10 @@ function App() {
                             label="From"
                             amount={amount}
                             currencyOptions={options}
-                            onCurrencyChange={() => setAmount(amount)}
+                            onCurrencyChange={(currency) => setFrom(currency)}
                             selectCurrency={from}
                             onAmountChange={(amount) => setAmount(amount)}
-                        />
+                        />                                                                              
                     </div>
                     <div className="relative w-full h-0.5">
                         <button
@@ -57,7 +57,7 @@ function App() {
                             label="To"
                             amount={convertedAmount}
                             currencyOptions={options}
-                            onCurrencyChange={() => setAmount(amount)}
+                            onCurrencyChange={(currency) => setTo(currency)}
                             selectCurrency={to}
                             onAmountChange={(amount) => setAmount(amount)}
                         />
