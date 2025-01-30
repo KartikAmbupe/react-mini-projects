@@ -1,17 +1,17 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   const addCount = () => {
     setCount(count + 1);
-  }
+  };
 
   const subCount = () => {
-    if(count <= 0) return
+    if (count <= 0) return;
     setCount(count - 1);
-  }
+  };
 
   return (
     <>
@@ -20,7 +20,7 @@ function App() {
       <button onClick={addCount}>Increment</button>
       <button onClick={subCount}>Decrement</button>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
